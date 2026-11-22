@@ -44,3 +44,15 @@ test("brand mark keeps the product logo and adds 'by LogicBalls'", () => {
 test("unknown product id fails loudly", () => {
   assert.throws(() => familyFooter({ product: "nope" }), /unknown product/)
 })
+
+test("locale translates the family text; product names stay; unknown locale falls back to English", () => {
+  const de = familyFooter({ product: "gpt0", year: 2026, locale: "de" })
+  assert.ok(de.includes("Die LogicBalls-Familie"))
+  assert.ok(de.includes("GPT0 ist ein Produkt von LogicBalls"))
+  assert.ok(de.includes("LogicBalls folgen"))
+  assert.ok(de.includes("KI-Detektor") && de.includes(">Kveeky<"))
+  assert.ok(brandMark({ product: "gpt0", logo: "", locale: "es" }).includes(">por "))
+  assert.ok(familyRow({ product: "gpt0", locale: "pt-BR" }).includes("A família LogicBalls"))
+  const xx = familyFooter({ product: "gpt0", year: 2026, locale: "ja" })
+  assert.ok(xx.includes("The LogicBalls family") && xx.includes("GPT0 is a LogicBalls product"))
+})

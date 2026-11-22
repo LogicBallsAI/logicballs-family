@@ -20,7 +20,7 @@ Every link out carries `utm_source=<product>&utm_medium=referral&utm_campaign=fa
 The repo is public (it only holds what the websites already show), so no token is needed:
 
 ```
-pnpm add github:LogicBallsAI/logicballs-family#v1.1.0
+pnpm add github:LogicBallsAI/logicballs-family#v1.2.0
 ```
 
 To update a product later, change the tag (`#v1.2.0`) and run `pnpm install`.
@@ -62,3 +62,9 @@ Colors can be tuned per site with CSS variables: `--lbf-text`, `--lbf-muted`, `-
 - Check: `npm test` and `npm run preview` (writes `preview.html`)
 - Release: bump `version` in `package.json`, commit, then `git tag vX.Y.Z && git push --tags`.
   Then point each product at the new tag.
+
+## Languages
+
+Every part takes an optional `locale`: `familyFooter({ product: "gpt0", locale: "de" })`.
+Built in: en, de, es, fr, it, pt (`pt-BR` uses pt). Any other language falls back to English.
+Translations live in `src/i18n.js`. Product names and the address are never translated.
