@@ -1,6 +1,6 @@
 {
   "name": "@logicballsai/family",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "LogicBalls family brand parts shared by every product: the 'by LogicBalls' brand mark, the family row and the footer bottom bar.",
   "type": "module",
   "exports": {
@@ -8,14 +8,21 @@
     "./family.css": "./src/family.css",
     "./data": "./src/data.js"
   },
-  "files": ["src", "README.md"],
-  "sideEffects": ["*.css"],
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "sideEffects": [
+    "*.css"
+  ],
   "scripts": {
     "icons": "node scripts/build-icons.mjs",
     "test": "node --test test/*.test.js",
     "preview": "node scripts/preview.mjs"
   },
-  "repository": { "type": "git", "url": "git+https://github.com/LogicBallsAI/logicballs-family.git" },
-  "publishConfig": { "registry": "https://npm.pkg.github.com" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LogicBallsAI/logicballs-family.git"
+  },
   "license": "UNLICENSED"
 }

@@ -6,11 +6,12 @@ test("every product has an icon", () => {
   for (const p of PRODUCTS) assert.ok(ICONS[p.id]?.startsWith("data:image/"), p.id)
 })
 
-test("family row lists the other six products, not the current one", () => {
+test("family row lists all seven products; the current one is marked, not linked", () => {
   const html = familyRow({ product: "kveeky" })
-  assert.equal((html.match(/<li>/g) || []).length, 6)
-  assert.ok(!html.includes(">Kveeky<"))
-  for (const n of ["LogicBalls", "Snapcorn", "PDF7", "GPT0", "Publish7", "MojoIndie"]) assert.ok(html.includes(`>${n}<`), n)
+  assert.equal((html.match(/<li>/g) || []).length, 7)
+  for (const n of ["LogicBalls", "Kveeky", "Snapcorn", "PDF7", "GPT0", "Publish7", "MojoIndie"]) assert.ok(html.includes(`>${n}<`), n)
+  assert.match(html, /<span class="lbf-here" aria-current="page">.*?>Kveeky</)
+  assert.ok(!html.includes('href="https://kveeky.com'))
 })
 
 test("links carry UTM tags naming the sending product", () => {

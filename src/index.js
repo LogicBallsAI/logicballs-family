@@ -4,7 +4,7 @@
 //
 // What lives here is only what every product shares:
 //   brandMark()  product logo + "by LogicBalls" (header and footer)
-//   familyRow()  "More from the LogicBalls family": the other products
+//   familyRow()  "The LogicBalls family": all seven products, current one marked
 //   bottomBar()  "<Product> is a LogicBalls product" · © year · address · Follow LogicBalls + socials
 //   familyFooter() = familyRow() + bottomBar()
 // Each product keeps its own menu, buttons, footer columns, tagline and badges.
@@ -44,14 +44,17 @@ export function brandMark({ product, logo, href = "/", spot = "header" }) {
     `</span>`
 }
 
-/** "More from the LogicBalls family": every product except the current one. */
+/** "The LogicBalls family": all seven products. The current one is marked, not linked. */
 export function familyRow({ product }) {
   const p = productById(product)
-  const items = PRODUCTS.filter((x) => x.id !== p.id).map((x) =>
-    `<li><a href="${esc(withUtm(x.href, p.id, "footer"))}" rel="noopener">` +
-    `<img src="${ICONS[x.id]}" alt="" width="28" height="28" loading="lazy">` +
-    `<span><strong>${esc(x.name)}</strong><small>${esc(x.line)}</small></span></a></li>`).join("")
-  return `<div class="lbf-family"><h2 class="lbf-h">More from the ${PARENT.name} family</h2><ul>${items}</ul></div>`
+  const items = PRODUCTS.map((x) => {
+    const body = `<img src="${ICONS[x.id]}" alt="" width="28" height="28" loading="lazy">` +
+      `<span><strong>${esc(x.name)}</strong><small>${esc(x.line)}</small></span>`
+    return x.id === p.id
+      ? `<li><span class="lbf-here" aria-current="page">${body}</span></li>`
+      : `<li><a href="${esc(withUtm(x.href, p.id, "footer"))}" rel="noopener">${body}</a></li>`
+  }).join("")
+  return `<div class="lbf-family"><h2 class="lbf-h">The ${PARENT.name} family</h2><ul>${items}</ul></div>`
 }
 
 /** Bottom bar: endorsement, © year, address, LogicBalls social accounts. */

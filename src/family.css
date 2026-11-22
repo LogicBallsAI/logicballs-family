@@ -23,8 +23,9 @@
 .lbf-family { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--lbf-border); }
 .lbf-h { margin: 0 0 12px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--lbf-muted); }
 .lbf-family ul { display: grid; gap: 8px; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.lbf-family a { display: flex; align-items: center; gap: 10px; height: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--lbf-border); border-radius: 10px; background: var(--lbf-card); transition: border-color .15s; }
+.lbf-family a, .lbf-here { display: flex; align-items: center; gap: 10px; height: 100%; box-sizing: border-box; padding: 10px 12px; border: 1px solid var(--lbf-border); border-radius: 10px; background: var(--lbf-card); transition: border-color .15s; }
 .lbf-family a:hover { border-color: var(--lbf-accent); }
+.lbf-here { border-color: var(--lbf-text) !important; }
 .lbf-family img { width: 28px; height: 28px; border-radius: 6px; object-fit: contain; flex: none; }
 .lbf-family strong { display: block; color: var(--lbf-text); font-weight: 600; font-size: 14px; }
 .lbf-family small { display: block; font-size: 12px; color: var(--lbf-muted); }
@@ -39,4 +40,4 @@
 .lbf-follow a:hover { color: var(--lbf-text); }
 
 @media (min-width: 640px) { .lbf-family ul { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (min-width: 1024px) { .lbf-family ul { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { .lbf-family ul { grid-template-columns: repeat(7, minmax(0, 1fr)); } .lbf-family a, .lbf-here { padding: 10px; gap: 8px; } }

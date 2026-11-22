@@ -6,7 +6,7 @@ version, and each product picks them up on its next install.
 | Part | Function | Where |
 |---|---|---|
 | Brand mark: product logo + "by LogicBalls" under it | `brandMark({ product, logo, href?, spot? })` | Header and footer logo |
-| "More from the LogicBalls family" row (the other 6 products) | `familyRow({ product })` | Footer |
+| "The LogicBalls family" row (all 7, the current one marked) | `familyRow({ product })` | Footer |
 | Bottom bar: "X is a LogicBalls product" · © year · address · Follow LogicBalls + socials | `bottomBar({ product, year? })` | Footer |
 | Family row + bottom bar together | `familyFooter({ product, year? })` | Footer |
 
@@ -15,18 +15,15 @@ version, and each product picks them up on its next install.
 Product ids: `logicballs`, `kveeky`, `snapcorn`, `pdf7`, `gpt0`, `publish7`, `mojoindie`.
 Every link out carries `utm_source=<product>&utm_medium=referral&utm_campaign=family_header|family_footer`.
 
-## Install (GitHub Packages, private)
+## Install
 
-`.npmrc` in the product repo:
+The repo is public (it only holds what the websites already show), so no token is needed:
 
 ```
-@logicballsai:registry=https://npm.pkg.github.com
-//npm.pkg.github.com/:_authToken=${NODE_AUTH_TOKEN}
+pnpm add github:LogicBallsAI/logicballs-family#v1.1.0
 ```
 
-Then `pnpm add @logicballsai/family`. In CI set `NODE_AUTH_TOKEN` to a token with `read:packages`
-(for repos in the LogicBallsAI org, `secrets.GITHUB_TOKEN` works once the repo is given access in
-the package settings).
+To update a product later, change the tag (`#v1.2.0`) and run `pnpm install`.
 
 ## Use
 
@@ -64,4 +61,4 @@ Colors can be tuned per site with CSS variables: `--lbf-text`, `--lbf-muted`, `-
 - Look: `src/family.css`
 - Check: `npm test` and `npm run preview` (writes `preview.html`)
 - Release: bump `version` in `package.json`, commit, then `git tag vX.Y.Z && git push --tags`.
-  The publish workflow tests and publishes it.
+  Then point each product at the new tag.
