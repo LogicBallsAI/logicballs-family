@@ -20,7 +20,7 @@ Every link out carries `utm_source=<product>&utm_medium=referral&utm_campaign=fa
 The repo is public (it only holds what the websites already show), so no token is needed:
 
 ```
-pnpm add github:LogicBallsAI/logicballs-family#v1.2.0
+pnpm add github:logicballs/logicballs-family#v1.2.0
 ```
 
 To update a product later, change the tag (`#v1.2.0`) and run `pnpm install`.
