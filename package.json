@@ -1,6 +1,6 @@
 {
   "name": "@logicballsai/family",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "LogicBalls family brand parts shared by every product: the 'by LogicBalls' brand mark, the family row and the footer bottom bar.",
   "type": "module",
   "exports": {
